@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Andrea Status Analyzer</title>
+    <style>
+      :root {
+        --primary-pink: #ff6b8b;
+        --secondary-pink: #ff8e53;
+        --bg-color: #fff0f3;
+        --card-bg: #ffffff;
+        --text-color: #4a4a4a;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, var(--bg-color), #ffe3ed);
+        color: var(--text-color);
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        background-color: var(--card-bg);
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(255, 107, 139, 0.2);
+        width: 100%;
+        max-width: 450px;
+        text-align: center;
+        box-sizing: border-box;
+      }
+
+      h2 {
+        color: var(--primary-pink);
+        margin-bottom: 10px;
+        font-size: 24px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        color: #888;
+        margin-bottom: 25px;
+      }
+
+      .status-box {
+        background-color: #fff5f7;
+        border: 2px dashed var(--primary-pink);
+        border-radius: 12px;
+        padding: 15px;
+        margin-bottom: 20px;
+        font-size: 15px;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        transition: all 0.3s ease;
+      }
+
+      .btn-group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      button,
+      .submit-btn {
+        background: linear-gradient(
+          135deg,
+          var(--primary-pink),
+          var(--secondary-pink)
+        );
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0 4px 15px rgba(255, 107, 139, 0.4);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+
+      button:hover,
+      .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 107, 139, 0.6);
+      }
+
+      button:active,
+      .submit-btn:active {
+        transform: translateY(0);
+      }
+
+      /* Formspree form section styling */
+      .input-section {
+        background-color: #fffafb;
+        padding: 15px;
+        border-radius: 12px;
+        border: 1px solid #ffd1dc;
+        text-align: left;
+      }
+
+      .input-section label {
+        font-size: 13px;
+        font-weight: bold;
+        color: #666;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .input-row {
+        display: flex;
+        gap: 8px;
+      }
+
+      input[type="text"] {
+        flex: 1;
+        padding: 10px 15px;
+        border: 1px solid #ffb6c1;
+        border-radius: 20px;
+        outline: none;
+        font-size: 14px;
+      }
+
+      input[type="text"]:focus {
+        border-color: var(--primary-pink);
+      }
+
+      .submit-btn {
+        padding: 10px 18px;
+        font-size: 14px;
+        border-radius: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>⚠️ Andrea Status Analyzer</h2>
+      <p class="subtitle">"What are you doing?"</p>
+
+      <!-- Status display box -->
+      <div class="status-box" id="statusBox">
+        Click the button below to check reply speed...
+      </div>
+
+      <!-- Interactive buttons group -->
+      <div class="btn-group">
+        <button type="button" onclick="checkStatus()">
+          🔍 Run Delay Diagnostic
+        </button>
+        <button
+          type="button"
+          onclick="demandAnExplanation()"
+          style="background: linear-gradient(135deg, #ff416c, #ff4b2b)"
+        >
+          🚨
+        </button>
+      </div>
+
+      <!-- Formspree mail form: Connected to your Formspree endpoint -->
+      <form
+        action="https://formspree.io/f/myewerjr"
+        method="POST"
+        class="input-section"
+      >
+        <label for="excuseInput"
+          >⌨️ Please enter your excuse for replying late:</label
+        >
+        <div class="input-row">
+          <!-- name="excuse" ensures the field title appears properly in your email -->
+          <input
+            type="text"
+            id="excuseInput"
+            name="excuse"
+            placeholder="e.g., I'm drinking beer..."
+            required
+          />
+          <button type="submit" class="submit-btn">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      // Function triggered when clicking "Run Delay Diagnostic"
+      function checkStatus() {
+        const box = document.getElementById("statusBox");
+        box.style.backgroundColor = "#fff0f3";
+        box.innerHTML =
+          "⏳ Scanning chat history...<br><b>Warning: Severe reply delay detected!</b>";
+      }
+
+      // Function triggered when clicking "Issue Interrogation"
+      function demandAnExplanation() {
+        const box = document.getElementById("statusBox");
+        box.style.backgroundColor = "#ffe3ed";
+        box.innerHTML =
+          "🚨 <b>Error 404:</b> Ian's patience not found!<br>Text her (╯°□°)╯︵ ┻━┻";
+      }
+    </script>
+  </body>
+</html>
